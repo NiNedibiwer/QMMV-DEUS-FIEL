@@ -413,6 +413,14 @@
             
             // Determine result based on answers
             const result = determineResult();
+
+            // Dispara evento Lead no Meta Pixel quando a pessoa completa o quiz
+            // Isso ajuda o algoritmo a identificar quem tem intenção real
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: result.name
+                });
+            }
             
             document.getElementById('result-cycle-name').innerHTML = result.name;
             document.getElementById('result-message').innerHTML = result.message;
