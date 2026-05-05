@@ -77,8 +77,33 @@
         }
     </style>
 
+    <!-- ===== UTMIFY ===== -->
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
+    <script>
+      const link = 'https://queromeumaridodevolta.netlify.app/plano';
+      function setBackRedirect(url) {
+        let urlBackRedirect = url;
+        urlBackRedirect = urlBackRedirect.trim() +
+          (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+          document.location.search.replace('?', '').toString();
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+        window.addEventListener('popstate', () => {
+          setTimeout(() => { location.href = urlBackRedirect; }, 1);
+        });
+      }
+      setBackRedirect(link);
+    </script>
+    <!-- ===== FIM UTMIFY ===== -->
+
     <!-- ===== META PIXEL ===== -->
-    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
