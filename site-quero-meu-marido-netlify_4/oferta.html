@@ -191,7 +191,7 @@
     <div class="max-w-screen-md mx-auto px-5 pb-2 pt-2">
         <div class="bg-[#FDF6F0] rounded-3xl p-6 text-center border border-[#E8D5C4]">
             <p class="text-[#8B5E3C] font-semibold text-base mb-1">Já sabe que quer começar?</p>
-            <p class="text-gray-500 text-sm mb-4">De <span class="line-through">R$97</span> por apenas <span class="font-bold text-[#8B5E3C]">R$37</span> — acesso imediato</p>
+            <p class="text-gray-500 text-sm mb-4">De <span class="line-through">R$97</span> por apenas <span class="font-bold text-[#8B5E3C]">R$27</span> — <span class="text-red-500 font-semibold">só nas próximas 24h</span></p>
             <button onclick="buyNow()"
                     class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985]">
                 <span>Quero salvar meu casamento agora</span>
@@ -280,11 +280,12 @@
             
             <div class="flex items-end justify-center gap-x-3 mb-2">
                 <span class="line-through text-4xl opacity-50">R$ 97</span>
-                <span class="text-7xl font-bold tracking-tighter">R$ 37</span>
+                <span class="text-7xl font-bold tracking-tighter">R$ 27</span>
             </div>
 
             <div class="text-sm opacity-80 mb-1">Pagamento único • Acesso imediato</div>
-            <div class="text-xs opacity-60 mb-8">Um presente para o seu casamento — e para você.</div>
+            <div class="text-xs opacity-60 mb-1">Um presente para o seu casamento — e para você.</div>
+            <div class="text-xs text-yellow-300 font-semibold mb-8">⏰ Oferta válida por apenas 24 horas</div>
             
             <div class="my-6 h-px bg-white/20"></div>
             
@@ -336,7 +337,7 @@
             <span>Quero salvar meu casamento agora</span>
             <i class="fa-solid fa-arrow-right"></i>
         </button>
-        <p class="text-gray-400 text-xs">Garantia de 30 dias • Acesso imediato • R$37 pagamento único</p>
+        <p class="text-gray-400 text-xs">Garantia de 30 dias • Acesso imediato • R$27 pagamento único</p>
     </div>
 
     <script>
@@ -361,14 +362,14 @@
 
         function buyNow() {
             // ===== LINK DO CHECKOUT KIWIFY =====
-            const checkoutUrl = "https://pay.kiwify.com.br/1OisAjf";
+            const checkoutUrl = "https://ggcheckout.app/checkout/v4/IVWSz0qlgXta945DCGVu";
 
             // Dispara o evento InitiateCheckout no Meta Pixel
             // O setTimeout garante que o evento seja enviado ANTES do redirect
             // (sem isso, o redirect cancela a requisição em ~30-50% dos casos)
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'InitiateCheckout', {
-                    value: 37.00,
+                    value: 27.00,
                     currency: 'BRL'
                 });
                 // Aguarda 250ms pro evento ser enviado pra Meta antes de redirecionar
