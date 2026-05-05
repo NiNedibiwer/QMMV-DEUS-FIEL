@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descubra a Fase do Seu Casamento • Quiz</title>
+    <meta name="description" content="Responda 4 perguntas e descubra em qual fase está o seu casamento — e o que fazer para reconectar com seu marido a partir de hoje.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
         
         body {
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: linear-gradient(135deg, #FDF6F0 0%, #F8EDE3 100%);
         }
         
@@ -63,8 +64,7 @@
         }
     </style>
 
-    <!-- ===== META PIXEL ===== -->
-    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
+    <!-- Meta Pixel -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -76,11 +76,12 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '4356731727899519');
         fbq('track', 'PageView');
+        fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"
     /></noscript>
-    <!-- ===== FIM META PIXEL ===== -->
+    <!-- Fim Meta Pixel -->
 
 </head>
 <body class="min-h-screen">
@@ -315,6 +316,7 @@
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
+            optionsContainer.setAttribute('role', 'radiogroup');
 
             const emojis = {
                 1: { A: '🔥', B: '🥶', C: '😕', D: '💔' },
@@ -330,6 +332,9 @@
                 const div = document.createElement('div');
                 div.className = 'option border-2 rounded-2xl p-4 cursor-pointer flex items-center gap-x-3 bg-white border-gray-200';
                 div.dataset.value = option.value;
+                div.setAttribute('role', 'radio');
+                div.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+                div.setAttribute('tabindex', '0');
 
                 if (isSelected) {
                     div.classList.add('selected');
@@ -347,6 +352,12 @@
                 `;
 
                 div.addEventListener('click', () => selectOption(q.id, option.value));
+                div.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectOption(q.id, option.value);
+                    }
+                });
                 optionsContainer.appendChild(div);
             });
 
@@ -368,14 +379,14 @@
                 document.getElementById('next-btn').disabled = false;
             }
 
-            // Update all options visually
+            // Atualiza visual e aria-checked de todas as opções
             document.querySelectorAll('#options-container .option').forEach(el => {
-                const isThis = el.dataset.value === value && !alreadySelected;
                 const isOther = el.dataset.value !== value;
 
                 if (isOther) {
                     el.classList.remove('selected');
                     el.classList.add('border-gray-200');
+                    el.setAttribute('aria-checked', 'false');
                     const dot = el.querySelector('.check-icon div');
                     if (dot) dot.style.opacity = '0';
                     const ring = el.querySelector('.check-icon');
@@ -383,6 +394,7 @@
                 } else {
                     el.classList.toggle('selected', !alreadySelected);
                     el.classList.toggle('border-gray-200', alreadySelected);
+                    el.setAttribute('aria-checked', alreadySelected ? 'false' : 'true');
                     const dot = el.querySelector('.check-icon div');
                     if (dot) dot.style.opacity = alreadySelected ? '0' : '1';
                     const ring = el.querySelector('.check-icon');
@@ -410,14 +422,17 @@
         function finishQuiz() {
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-            
-            // Determine result based on answers
+
             const result = determineResult();
-            
+
             document.getElementById('result-cycle-name').innerHTML = result.name;
             document.getElementById('result-message').innerHTML = result.message;
-            
-            // Save result to localStorage for sales page
+
+            // Dispara Lead ao concluir o quiz — momento de maior engajamento do funil
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead');
+            }
+
             localStorage.setItem('quizResult', JSON.stringify(result));
         }
 
