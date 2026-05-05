@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra a Fase do Seu Casamento • Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: linear-gradient(135deg, #FDF6F0 0%, #F8EDE3 100%);
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .quiz-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .option {
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(139 94 60 / 0.1);
+        }
+        
+        .option.selected {
+            border-color: #8B5E3C;
+            background-color: #FDF6F0;
+            box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+
+        .question-container {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .soft-shadow {
+            box-shadow: 0 25px 50px -12px rgb(139 94 60 / 0.15);
+        }
+    </style>
+
+    <!-- ===== META PIXEL ===== -->
+    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '4356731727899519');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- ===== FIM META PIXEL ===== -->
+
+</head>
+<body class="min-h-screen">
+
+    <!-- Header -->
+    <div class="bg-white/80 backdrop-blur-md border-b border-white/50 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-5 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div>
+                    <span class="font-bold text-2xl tracking-tighter text-[#8B5E3C]">Quero Meu Marido</span>
+                    <span class="font-semibold text-xl tracking-tight">de Volta</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-2 text-sm">
+                <div class="px-3 py-1 bg-white rounded-full text-xs font-medium flex items-center gap-x-1.5 shadow-sm">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="text-gray-600">100+ mulheres</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-md mx-auto px-5 pt-8 pb-12">
+        
+        <!-- Intro -->
+        <div id="intro-screen" class="text-center">
+
+            <p class="text-sm font-semibold tracking-widest text-[#8B5E3C] uppercase mb-6">Para você que ainda acredita no seu casamento</p>
+
+            <h1 class="heading-serif text-4xl leading-tight tracking-tighter mb-5">
+                Você sente que está<br>perdendo seu marido<br>aos poucos?
+            </h1>
+
+            <p class="text-gray-600 text-[17px] leading-relaxed mb-4">
+                Essa sensação de solidão dentro do próprio casamento é real — e tem um nome.
+            </p>
+
+            <p class="text-gray-500 text-[15px] leading-relaxed mb-8">
+                Responda 4 perguntas e descubra em qual fase está o seu casamento agora — e o que fazer a partir de hoje.
+            </p>
+            
+            <button onclick="startQuiz()" 
+                    class="w-full py-4 bg-[#8B5E3C] hover:bg-[#6F4A2F] active:bg-[#5C3E27] text-white font-semibold text-lg rounded-3xl transition-all flex items-center justify-center gap-x-3 shadow-lg">
+                <span>Quero descobrir minha fase</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            
+            <p class="text-xs text-gray-400 mt-4">Menos de 60 segundos • 100% confidencial</p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-screen" class="hidden">
+            
+            <!-- Progress -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between text-sm mb-2 px-1">
+                    <span class="font-medium text-gray-500">Pergunta <span id="current-question">1</span> de 4</span>
+                    <span class="font-semibold text-[#8B5E3C]" id="progress-text">25%</span>
+                </div>
+                <div class="h-2 bg-white rounded-full overflow-hidden shadow-inner">
+                    <div id="progress-bar" class="h-2 bg-gradient-to-r from-[#8B5E3C] to-[#B38B6D] rounded-full transition-all duration-500" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <!-- Question -->
+            <div id="question-container" class="question-container">
+                <h2 id="question-text" class="heading-serif text-3xl leading-tight mb-8 text-center"></h2>
+                
+                <div id="options-container" class="space-y-3">
+                    <!-- Options will be injected here -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mt-8 flex items-center justify-between">
+                <button onclick="previousQuestion()" id="prev-btn"
+                        class="px-6 py-3 text-gray-500 hover:text-gray-700 flex items-center gap-x-2 text-sm font-medium transition-colors disabled:opacity-40">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Voltar</span>
+                </button>
+                
+                <button onclick="nextQuestion()" id="next-btn"
+                        class="px-8 py-3.5 bg-[#8B5E3C] hover:bg-[#6F4A2F] text-white font-semibold rounded-2xl flex items-center gap-x-2 disabled:opacity-50 transition-all">
+                    <span id="next-text">Próxima</span>
+                </button>
+            </div>
+            
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden text-center">
+
+            <p class="text-sm font-semibold tracking-widest text-[#8B5E3C] uppercase mb-4">Análise concluída</p>
+
+            <h2 class="heading-serif text-3xl leading-tight mb-3">Identificamos a fase<br>do seu casamento.</h2>
+            <p class="text-gray-500 text-sm mb-7">Leia com atenção. Isso foi escrito para a sua situação específica.</p>
+
+            <div class="bg-white rounded-3xl p-7 mb-7 soft-shadow text-left">
+                <div id="result-cycle-name" class="text-xl font-semibold text-[#8B5E3C] mb-3"></div>
+                <div id="result-message" class="text-gray-600 leading-relaxed text-[15px]"></div>
+            </div>
+
+            <!-- VIRADA -->
+            <div class="bg-[#FDF6F0] border border-[#E8D9C9] rounded-3xl p-7 mb-7 text-left">
+                <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-3">A real é que...</p>
+                <p class="text-gray-700 leading-relaxed text-[15px] mb-3">
+                    O problema no seu casamento não é falta de amor. É um padrão que foi se instalando entre vocês — devagar, silenciosamente — até virar rotina.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-[15px]">
+                    Não foi você. Não foi ele. Foi a dinâmica que tomou conta sem que ninguém percebesse. E a boa notícia? <strong>Padrões podem ser quebrados</strong> — com as ações certas, no momento certo.
+                </p>
+            </div>
+            
+            <button onclick="goToSalesPage()" 
+                    class="w-full py-4 bg-[#8B5E3C] hover:bg-[#6F4A2F] text-white font-semibold text-lg rounded-3xl flex items-center justify-center gap-x-3 active:scale-[0.985] transition-all shadow-lg">
+                <span>Quero o meu caminho de volta</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            
+            <p class="text-xs text-gray-400 mt-4">Você vai ver o plano feito para a sua fase</p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Tailwind config
+        function initTailwind() {
+            document.documentElement.style.setProperty('--accent', '#8B5E3C');
+        }
+
+        // Quiz Data
+        let currentQuestion = 0;
+        let answers = {};
+
+        const questions = [
+            {
+                id: 1,
+                text: "Qual é a principal dor no seu casamento hoje?",
+                options: [
+                    { value: "A", label: "Brigas frequentes e estresse mútuo" },
+                    { value: "B", label: "Meu marido está distante e frio" },
+                    { value: "C", label: "Já tem muito tempo assim e estou confusa" },
+                    { value: "D", label: "Perdi o desejo e a conexão" }
+                ]
+            },
+            {
+                id: 2,
+                text: "Há quanto tempo vocês estão vivendo essa fase difícil?",
+                options: [
+                    { value: "A", label: "Menos de 6 meses" },
+                    { value: "B", label: "Entre 6 meses e 2 anos" },
+                    { value: "C", label: "Mais de 2 anos" }
+                ]
+            },
+            {
+                id: 3,
+                text: "Você ainda sente amor pelo seu marido?",
+                options: [
+                    { value: "A", label: "Sim, ainda amo muito" },
+                    { value: "B", label: "Amo, mas está ficando difícil" },
+                    { value: "C", label: "Já não sinto mais como antes" }
+                ]
+            },
+            {
+                id: 4,
+                text: "Qual sentimento mais forte você tem agora?",
+                options: [
+                    { value: "A", label: "Medo de perder o casamento" },
+                    { value: "B", label: "Cansaço e exaustão" },
+                    { value: "C", label: "Raiva e frustração" },
+                    { value: "D", label: "Tristeza profunda" }
+                ]
+            }
+        ];
+
+        const cycleResults = {
+            "brigas": {
+                name: "Fase das Brigas Diárias",
+                message: "Vocês ainda se importam um com o outro — mas as brigas frequentes estão criando feridas que se acumulam. Essa fase é intensa, mas é uma das mais reversíveis quando se aprende a quebrar o padrão certo.",
+                messageHighLove: "Vocês ainda se amam — e isso aparece até nas brigas. O que está faltando não é amor: é a chave certa para sair desse padrão de conflito antes que ele crie uma distância que dói muito mais.",
+                messageLowLove: "As brigas constantes desgastam até o amor mais forte. Mas o cansaço que você sente não é sinal de que acabou — é sinal de que algo precisa mudar urgentemente na dinâmica entre vocês."
+            },
+            "tensao": {
+                name: "Fase da Tensão Diária",
+                message: "A raiva e a frustração viraram o clima padrão da casa. Essa tensão constante drena a energia de ambos e cria um muro invisível que vai crescendo a cada dia sem que nenhum dos dois perceba.",
+                messageHighLove: "Você ainda ama — mas a raiva está cobrindo esse amor como uma camada espessa. Essa fase tem solução, e começa por entender de onde vem essa tensão de verdade, não só os gatilhos na superfície.",
+                messageLowLove: "Quando a frustração dura tempo demais, é natural começar a questionar tudo. O que você sente não é falta de amor — é o grito de que a dinâmica entre vocês precisa mudar agora."
+            },
+            "afastamento": {
+                name: "Fase do Afastamento Silencioso",
+                message: "Seu marido está emocionalmente distante — e esse silêncio dói mais do que qualquer briga. Essa fase é traiçoeira porque parece calma por fora, mas por dentro está corroendo a conexão entre vocês dia após dia.",
+                messageHighLove: "Você ainda ama muito — e é exatamente esse amor que vai ser o motor da reconexão. O afastamento dele não significa que o sentimento acabou. Significa que algo dentro dele fechou. E tem como abrir isso.",
+                messageLowLove: "O afastamento prolongado esfria até quem se amava muito. O que você sente faz todo sentido. Mas ainda dá pra virar esse jogo — quando se age certo, antes que o silêncio se torne distância permanente."
+            },
+            "longo": {
+                name: "Fase do Distanciamento Prolongado",
+                message: "Já faz tempo que vocês vivem mais como companheiros de casa do que como um casal de verdade. Essa fase é mais difícil — mas não impossível. Muitas mulheres que estavam exatamente assim deram a volta por cima e reconectaram o casamento.",
+                messageHighLove: "O fato de você ainda amar depois de tanto tempo assim é poderoso. Esse amor é a base. O que falta é o caminho certo para que ele também volte a sentir — e esse caminho existe e é mais acessível do que parece.",
+                messageLowLove: "Depois de tanto tempo nessa fase, é natural questionar se ainda vale. Essa dúvida não te faz fraca — te faz humana. E a resposta precisa vir de um lugar de clareza, não de desespero ou exaustão."
+            },
+            "desejo": {
+                name: "Fase da Perda de Intimidade",
+                message: "A conexão física e emocional foi se apagando aos poucos — e agora parece que dois estranhos dividem a mesma cama. Essa fase dói de um jeito diferente, mais fundo. Mas ela tem reversão quando tratada do jeito certo.",
+                messageHighLove: "Você ainda ama, mas o desejo e a proximidade sumiram. Isso não é o fim — é um sinal de que a conexão entre vocês precisa ser reconstruída por dentro. E começa por passos menores do que você imagina.",
+                messageLowLove: "Quando o desejo e o carinho enfraquecem ao mesmo tempo, dá um medo diferente de tudo. Mas sentir isso não significa que acabou — significa que chegou na hora de agir antes que a distância se torne permanente."
+            },
+            "esgotamento": {
+                name: "Fase do Esgotamento Crônico",
+                message: "Você chegou no limite. Anos carregando esse peso, tentando, brigando, se afastando, tentando de novo — e o cansaço acumulado virou parte de você. Essa fase precisa de um caminho claro, não de mais esforço no escuro.",
+                messageHighLove: "Você ainda ama — e mesmo assim está exausta. Esse amor que persiste depois de tudo é real e poderoso. O que falta não é força de vontade: é uma direção diferente, porque tentar do mesmo jeito só vai te desgastar mais.",
+                messageLowLove: "O cansaço depois de tanto tempo é real e faz todo sentido. Você não está fraca — está esgotada de lutar sem saber exatamente como. Ainda dá pra mudar o rumo, mas precisa de um caminho diferente do que você já tentou."
+            }
+        };
+
+        function startQuiz() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            currentQuestion = 0;
+            answers = {};
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('question-text').innerHTML = q.text;
+            document.getElementById('current-question').innerText = currentQuestion + 1;
+
+            const progress = Math.round(((currentQuestion + 1) / questions.length) * 100);
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-text').innerText = `${progress}%`;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const emojis = {
+                1: { A: '🔥', B: '🥶', C: '😕', D: '💔' },
+                2: { A: '⏳', B: '📆', C: '🗓️' },
+                3: { A: '❤️', B: '💛', C: '🖤' },
+                4: { A: '😰', B: '😩', C: '😤', D: '😢' }
+            };
+
+            q.options.forEach(option => {
+                const isSelected = answers[q.id] === option.value;
+                const emoji = (emojis[q.id] && emojis[q.id][option.value]) || '';
+
+                const div = document.createElement('div');
+                div.className = 'option border-2 rounded-2xl p-4 cursor-pointer flex items-center gap-x-3 bg-white border-gray-200';
+                div.dataset.value = option.value;
+
+                if (isSelected) {
+                    div.classList.add('selected');
+                    div.classList.remove('border-gray-200');
+                }
+
+                div.innerHTML = `
+                    <div class="flex-1 flex items-center gap-x-3">
+                        <span class="text-xl">${emoji}</span>
+                        <span class="font-semibold">${option.label}</span>
+                    </div>
+                    <div class="check-icon w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-[#8B5E3C] opacity-0 transition-opacity"></div>
+                    </div>
+                `;
+
+                div.addEventListener('click', () => selectOption(q.id, option.value));
+                optionsContainer.appendChild(div);
+            });
+
+            document.getElementById('prev-btn').disabled = currentQuestion === 0;
+            document.getElementById('next-btn').disabled = !answers[q.id];
+            document.getElementById('next-text').innerHTML = currentQuestion === questions.length - 1 ? 'Finalizar' : 'Próxima';
+        }
+
+        function selectOption(questionId, value) {
+            const alreadySelected = answers[questionId] === value;
+
+            if (alreadySelected) {
+                // Deselect
+                delete answers[questionId];
+                document.getElementById('next-btn').disabled = true;
+            } else {
+                // Select
+                answers[questionId] = value;
+                document.getElementById('next-btn').disabled = false;
+            }
+
+            // Update all options visually
+            document.querySelectorAll('#options-container .option').forEach(el => {
+                const isThis = el.dataset.value === value && !alreadySelected;
+                const isOther = el.dataset.value !== value;
+
+                if (isOther) {
+                    el.classList.remove('selected');
+                    el.classList.add('border-gray-200');
+                    const dot = el.querySelector('.check-icon div');
+                    if (dot) dot.style.opacity = '0';
+                    const ring = el.querySelector('.check-icon');
+                    if (ring) ring.style.borderColor = '';
+                } else {
+                    el.classList.toggle('selected', !alreadySelected);
+                    el.classList.toggle('border-gray-200', alreadySelected);
+                    const dot = el.querySelector('.check-icon div');
+                    if (dot) dot.style.opacity = alreadySelected ? '0' : '1';
+                    const ring = el.querySelector('.check-icon');
+                    if (ring) ring.style.borderColor = alreadySelected ? '' : '#8B5E3C';
+                }
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            
+            // Determine result based on answers
+            const result = determineResult();
+            
+            document.getElementById('result-cycle-name').innerHTML = result.name;
+            document.getElementById('result-message').innerHTML = result.message;
+            
+            // Save result to localStorage for sales page
+            localStorage.setItem('quizResult', JSON.stringify(result));
+        }
+
+        function determineResult() {
+            const q1 = answers[1];
+            const q2 = answers[2];
+            const q3 = answers[3];
+            const q4 = answers[4];
+
+            // — FASE base: Q1 é o driver principal —
+            let phaseKey;
+
+            if (q1 === "A") {
+                // Brigas/conflito ativo
+                if (q4 === "C") {
+                    phaseKey = "tensao"; // raiva dominante → Tensão Diária
+                } else if (q4 === "B" && q2 === "C") {
+                    phaseKey = "esgotamento"; // cansaço + mais de 2 anos → Esgotamento Crônico
+                } else {
+                    phaseKey = "brigas"; // conflito geral → Brigas Diárias
+                }
+            } else if (q1 === "B") {
+                // Marido distante e frio
+                if (q2 === "C") {
+                    phaseKey = "longo"; // mais de 2 anos → Distanciamento Prolongado
+                } else {
+                    phaseKey = "afastamento"; // recente → Afastamento Silencioso
+                }
+            } else if (q1 === "C") {
+                // Confusa, muito tempo assim
+                if (q4 === "B") {
+                    phaseKey = "esgotamento"; // cansaço predomina → Esgotamento Crônico
+                } else {
+                    phaseKey = "longo"; // confusão + tempo → Distanciamento Prolongado
+                }
+            } else if (q1 === "D") {
+                // Perda de desejo e conexão → sempre Perda de Intimidade
+                phaseKey = "desejo";
+            } else {
+                phaseKey = "brigas"; // fallback seguro
+            }
+
+            // — MENSAGEM personalizada: Q3 (nível de amor) ajusta o tom —
+            const base = cycleResults[phaseKey];
+            let message;
+            if (q3 === "A") {
+                message = base.messageHighLove; // ainda ama muito → mais esperança
+            } else if (q3 === "C") {
+                message = base.messageLowLove;  // já não sente como antes → mais acolhimento
+            } else {
+                message = base.message;          // ama mas está difícil → equilibrado
+            }
+
+            return { name: base.name, message: message };
+        }
+
+        function goToSalesPage() {
+            // Redirect to sales page
+            window.location.href = "/plano";
+        }
+
+        // Initialize
+        function initialize() {
+            initTailwind();
+            
+            // Keyboard support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Enter" && !document.getElementById('quiz-screen').classList.contains('hidden')) {
+                    const nextBtn = document.getElementById('next-btn');
+                    if (!nextBtn.disabled) {
+                        nextQuestion();
+                    }
+                }
+            });
+            
+            console.log('%c[Quiz] Página carregada com sucesso', 'color:#8B5E3C');
+        }
+
+        window.onload = initialize;
+    </script>
+</body>
+</html>
