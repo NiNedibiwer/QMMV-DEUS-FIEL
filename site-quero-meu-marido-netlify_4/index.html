@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descubra a Fase do Seu Casamento • Quiz</title>
-    <meta name="description" content="Responda 4 perguntas e descubra em qual fase está o seu casamento — e o que fazer para reconectar com seu marido a partir de hoje.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
         
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system_ui, sans-serif;
             background: linear-gradient(135deg, #FDF6F0 0%, #F8EDE3 100%);
         }
         
@@ -64,7 +63,8 @@
         }
     </style>
 
-    <!-- Meta Pixel -->
+    <!-- ===== META PIXEL ===== -->
+    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -76,12 +76,11 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '4356731727899519');
         fbq('track', 'PageView');
-        fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"
     /></noscript>
-    <!-- Fim Meta Pixel -->
+    <!-- ===== FIM META PIXEL ===== -->
 
 </head>
 <body class="min-h-screen">
@@ -175,34 +174,24 @@
         <!-- Result Screen -->
         <div id="result-screen" class="hidden text-center">
 
-            <p class="text-sm font-semibold tracking-widest text-[#8B5E3C] uppercase mb-4">Análise concluída</p>
+            <p class="text-sm font-semibold tracking-widest text-[#8B5E3C] uppercase mb-4">✓ Análise concluída</p>
 
-            <h2 class="heading-serif text-3xl leading-tight mb-3">Identificamos a fase<br>do seu casamento.</h2>
-            <p class="text-gray-500 text-sm mb-7">Leia com atenção. Isso foi escrito para a sua situação específica.</p>
+            <h2 class="heading-serif text-2xl leading-tight mb-1 text-gray-700">Você está na</h2>
+            <h2 id="result-phase-name" class="heading-serif text-3xl leading-tight text-[#8B5E3C] mb-6"></h2>
 
-            <div class="bg-white rounded-3xl p-7 mb-7 soft-shadow text-left">
-                <div id="result-cycle-name" class="text-xl font-semibold text-[#8B5E3C] mb-3"></div>
-                <div id="result-message" class="text-gray-600 leading-relaxed text-[15px]"></div>
-            </div>
-
-            <!-- VIRADA -->
-            <div class="bg-[#FDF6F0] border border-[#E8D9C9] rounded-3xl p-7 mb-7 text-left">
+            <!-- VIRADA — protagonista da tela -->
+            <div class="bg-[#FDF6F0] border border-[#E8D9C9] rounded-3xl p-7 mb-6 text-left">
                 <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-3">A real é que...</p>
-                <p class="text-gray-700 leading-relaxed text-[15px] mb-3">
-                    O problema no seu casamento não é falta de amor. É um padrão que foi se instalando entre vocês — devagar, silenciosamente — até virar rotina.
-                </p>
-                <p class="text-gray-700 leading-relaxed text-[15px]">
-                    Não foi você. Não foi ele. Foi a dinâmica que tomou conta sem que ninguém percebesse. E a boa notícia? <strong>Padrões podem ser quebrados</strong> — com as ações certas, no momento certo.
-                </p>
+                <p id="result-real" class="text-gray-700 leading-relaxed text-[15px] mb-3"></p>
+                <p id="result-tone" class="text-gray-700 leading-relaxed text-[15px] font-medium"></p>
             </div>
-            
+
             <button onclick="goToSalesPage()" 
-                    class="w-full py-4 bg-[#8B5E3C] hover:bg-[#6F4A2F] text-white font-semibold text-lg rounded-3xl flex items-center justify-center gap-x-3 active:scale-[0.985] transition-all shadow-lg">
-                <span>Quero o meu caminho de volta</span>
-                <i class="fa-solid fa-arrow-right"></i>
+                    class="w-full py-4 bg-[#8B5E3C] hover:bg-[#6F4A2F] text-white font-semibold text-lg rounded-3xl flex items-center justify-center gap-x-3 active:scale-[0.985] transition-all shadow-lg mb-3">
+                <span>Quero ver o caminho de volta →</span>
             </button>
             
-            <p class="text-xs text-gray-400 mt-4">Você vai ver o plano feito para a sua fase</p>
+            <p class="text-xs text-gray-400">Leva menos de 3 minutos</p>
         </div>
         
     </div>
@@ -258,42 +247,24 @@
             }
         ];
 
-        const cycleResults = {
-            "brigas": {
-                name: "Fase das Brigas Diárias",
-                message: "Vocês ainda se importam um com o outro — mas as brigas frequentes estão criando feridas que se acumulam. Essa fase é intensa, mas é uma das mais reversíveis quando se aprende a quebrar o padrão certo.",
-                messageHighLove: "Vocês ainda se amam — e isso aparece até nas brigas. O que está faltando não é amor: é a chave certa para sair desse padrão de conflito antes que ele crie uma distância que dói muito mais.",
-                messageLowLove: "As brigas constantes desgastam até o amor mais forte. Mas o cansaço que você sente não é sinal de que acabou — é sinal de que algo precisa mudar urgentemente na dinâmica entre vocês."
+        // Fase = espelho exato da Q1 (impossível errar)
+        // A real é que... = virada emocional, curta e impactante
+        const phases = {
+            "A": {
+                name: "Fase das Brigas e Conflitos",
+                real: "Vocês ainda se importam — e é justamente por isso que dói tanto. As brigas não são o problema. São o sintoma de algo que ainda tem volta."
             },
-            "tensao": {
-                name: "Fase da Tensão Diária",
-                message: "A raiva e a frustração viraram o clima padrão da casa. Essa tensão constante drena a energia de ambos e cria um muro invisível que vai crescendo a cada dia sem que nenhum dos dois perceba.",
-                messageHighLove: "Você ainda ama — mas a raiva está cobrindo esse amor como uma camada espessa. Essa fase tem solução, e começa por entender de onde vem essa tensão de verdade, não só os gatilhos na superfície.",
-                messageLowLove: "Quando a frustração dura tempo demais, é natural começar a questionar tudo. O que você sente não é falta de amor — é o grito de que a dinâmica entre vocês precisa mudar agora."
-            },
-            "afastamento": {
+            "B": {
                 name: "Fase do Afastamento Silencioso",
-                message: "Seu marido está emocionalmente distante — e esse silêncio dói mais do que qualquer briga. Essa fase é traiçoeira porque parece calma por fora, mas por dentro está corroendo a conexão entre vocês dia após dia.",
-                messageHighLove: "Você ainda ama muito — e é exatamente esse amor que vai ser o motor da reconexão. O afastamento dele não significa que o sentimento acabou. Significa que algo dentro dele fechou. E tem como abrir isso.",
-                messageLowLove: "O afastamento prolongado esfria até quem se amava muito. O que você sente faz todo sentido. Mas ainda dá pra virar esse jogo — quando se age certo, antes que o silêncio se torne distância permanente."
+                real: "O silêncio dele dói mais do que qualquer briga. Mas esse afastamento não é falta de amor — é um padrão que se instalou. E padrões se desfazem."
             },
-            "longo": {
-                name: "Fase do Distanciamento Prolongado",
-                message: "Já faz tempo que vocês vivem mais como companheiros de casa do que como um casal de verdade. Essa fase é mais difícil — mas não impossível. Muitas mulheres que estavam exatamente assim deram a volta por cima e reconectaram o casamento.",
-                messageHighLove: "O fato de você ainda amar depois de tanto tempo assim é poderoso. Esse amor é a base. O que falta é o caminho certo para que ele também volte a sentir — e esse caminho existe e é mais acessível do que parece.",
-                messageLowLove: "Depois de tanto tempo nessa fase, é natural questionar se ainda vale. Essa dúvida não te faz fraca — te faz humana. E a resposta precisa vir de um lugar de clareza, não de desespero ou exaustão."
+            "C": {
+                name: "Fase do Desgaste Prolongado",
+                real: "Anos carregando esse peso fazem qualquer mulher duvidar. Mas duvidar não é desistir. É sinal de que chegou a hora de fazer diferente."
             },
-            "desejo": {
-                name: "Fase da Perda de Intimidade",
-                message: "A conexão física e emocional foi se apagando aos poucos — e agora parece que dois estranhos dividem a mesma cama. Essa fase dói de um jeito diferente, mais fundo. Mas ela tem reversão quando tratada do jeito certo.",
-                messageHighLove: "Você ainda ama, mas o desejo e a proximidade sumiram. Isso não é o fim — é um sinal de que a conexão entre vocês precisa ser reconstruída por dentro. E começa por passos menores do que você imagina.",
-                messageLowLove: "Quando o desejo e o carinho enfraquecem ao mesmo tempo, dá um medo diferente de tudo. Mas sentir isso não significa que acabou — significa que chegou na hora de agir antes que a distância se torne permanente."
-            },
-            "esgotamento": {
-                name: "Fase do Esgotamento Crônico",
-                message: "Você chegou no limite. Anos carregando esse peso, tentando, brigando, se afastando, tentando de novo — e o cansaço acumulado virou parte de você. Essa fase precisa de um caminho claro, não de mais esforço no escuro.",
-                messageHighLove: "Você ainda ama — e mesmo assim está exausta. Esse amor que persiste depois de tudo é real e poderoso. O que falta não é força de vontade: é uma direção diferente, porque tentar do mesmo jeito só vai te desgastar mais.",
-                messageLowLove: "O cansaço depois de tanto tempo é real e faz todo sentido. Você não está fraca — está esgotada de lutar sem saber exatamente como. Ainda dá pra mudar o rumo, mas precisa de um caminho diferente do que você já tentou."
+            "D": {
+                name: "Fase da Perda de Conexão",
+                real: "Quando o desejo se afasta, parece que dois estranhos dividem a mesma cama. Mas a conexão não morreu — só está dormente. E pode acordar."
             }
         };
 
@@ -316,25 +287,21 @@
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
-            optionsContainer.setAttribute('role', 'radiogroup');
 
-            const emojis = {
-                1: { A: '🔥', B: '🥶', C: '😕', D: '💔' },
-                2: { A: '⏳', B: '📆', C: '🗓️' },
-                3: { A: '❤️', B: '💛', C: '🖤' },
-                4: { A: '😰', B: '😩', C: '😤', D: '😢' }
+            const icons = {
+                1: { A: 'fa-bolt', B: 'fa-snowflake', C: 'fa-hourglass-half', D: 'fa-heart-crack' },
+                2: { A: 'fa-clock', B: 'fa-calendar-days', C: 'fa-hourglass-end' },
+                3: { A: 'fa-heart', B: 'fa-hand-holding-heart', C: 'fa-heart-circle-exclamation' },
+                4: { A: 'fa-shield-halved', B: 'fa-battery-quarter', C: 'fa-fire', D: 'fa-cloud-rain' }
             };
 
             q.options.forEach(option => {
                 const isSelected = answers[q.id] === option.value;
-                const emoji = (emojis[q.id] && emojis[q.id][option.value]) || '';
+                const iconClass = (icons[q.id] && icons[q.id][option.value]) || 'fa-circle';
 
                 const div = document.createElement('div');
                 div.className = 'option border-2 rounded-2xl p-4 cursor-pointer flex items-center gap-x-3 bg-white border-gray-200';
                 div.dataset.value = option.value;
-                div.setAttribute('role', 'radio');
-                div.setAttribute('aria-checked', isSelected ? 'true' : 'false');
-                div.setAttribute('tabindex', '0');
 
                 if (isSelected) {
                     div.classList.add('selected');
@@ -343,7 +310,7 @@
 
                 div.innerHTML = `
                     <div class="flex-1 flex items-center gap-x-3">
-                        <span class="text-xl">${emoji}</span>
+                        <i class="fa-solid ${iconClass} text-lg text-[#8B5E3C] w-6 text-center"></i>
                         <span class="font-semibold">${option.label}</span>
                     </div>
                     <div class="check-icon w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0">
@@ -352,12 +319,6 @@
                 `;
 
                 div.addEventListener('click', () => selectOption(q.id, option.value));
-                div.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        selectOption(q.id, option.value);
-                    }
-                });
                 optionsContainer.appendChild(div);
             });
 
@@ -379,14 +340,14 @@
                 document.getElementById('next-btn').disabled = false;
             }
 
-            // Atualiza visual e aria-checked de todas as opções
+            // Update all options visually
             document.querySelectorAll('#options-container .option').forEach(el => {
+                const isThis = el.dataset.value === value && !alreadySelected;
                 const isOther = el.dataset.value !== value;
 
                 if (isOther) {
                     el.classList.remove('selected');
                     el.classList.add('border-gray-200');
-                    el.setAttribute('aria-checked', 'false');
                     const dot = el.querySelector('.check-icon div');
                     if (dot) dot.style.opacity = '0';
                     const ring = el.querySelector('.check-icon');
@@ -394,7 +355,6 @@
                 } else {
                     el.classList.toggle('selected', !alreadySelected);
                     el.classList.toggle('border-gray-200', alreadySelected);
-                    el.setAttribute('aria-checked', alreadySelected ? 'false' : 'true');
                     const dot = el.querySelector('.check-icon div');
                     if (dot) dot.style.opacity = alreadySelected ? '0' : '1';
                     const ring = el.querySelector('.check-icon');
@@ -422,79 +382,45 @@
         function finishQuiz() {
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-
+            
             const result = determineResult();
 
-            // Dispara evento Lead no Meta Pixel quando a pessoa completa o quiz
-            // Isso ajuda o algoritmo a identificar quem tem intenção real
+            // Pixel Lead — registra a fase pra análise (não é exibido pro usuário)
             if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: result.name
-                });
+                fbq('track', 'Lead', { content_name: result.name });
             }
             
-            document.getElementById('result-cycle-name').innerHTML = result.name;
-            document.getElementById('result-message').innerHTML = result.message;
-
-            // Dispara Lead ao concluir o quiz — momento de maior engajamento do funil
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead');
-            }
-
+            // Renderiza a fase + virada na tela
+            document.getElementById('result-phase-name').textContent = result.name;
+            document.getElementById('result-real').textContent = result.real;
+            document.getElementById('result-tone').textContent = result.toneAddon;
+            
+            // Salva no localStorage pra eventual uso na página de vendas
             localStorage.setItem('quizResult', JSON.stringify(result));
         }
 
         function determineResult() {
             const q1 = answers[1];
-            const q2 = answers[2];
             const q3 = answers[3];
-            const q4 = answers[4];
 
-            // — FASE base: Q1 é o driver principal —
-            let phaseKey;
+            // Fase = espelho direto da Q1 (ela escolheu, então sempre bate)
+            const phase = phases[q1] || phases["A"];
 
-            if (q1 === "A") {
-                // Brigas/conflito ativo
-                if (q4 === "C") {
-                    phaseKey = "tensao"; // raiva dominante → Tensão Diária
-                } else if (q4 === "B" && q2 === "C") {
-                    phaseKey = "esgotamento"; // cansaço + mais de 2 anos → Esgotamento Crônico
-                } else {
-                    phaseKey = "brigas"; // conflito geral → Brigas Diárias
-                }
-            } else if (q1 === "B") {
-                // Marido distante e frio
-                if (q2 === "C") {
-                    phaseKey = "longo"; // mais de 2 anos → Distanciamento Prolongado
-                } else {
-                    phaseKey = "afastamento"; // recente → Afastamento Silencioso
-                }
-            } else if (q1 === "C") {
-                // Confusa, muito tempo assim
-                if (q4 === "B") {
-                    phaseKey = "esgotamento"; // cansaço predomina → Esgotamento Crônico
-                } else {
-                    phaseKey = "longo"; // confusão + tempo → Distanciamento Prolongado
-                }
-            } else if (q1 === "D") {
-                // Perda de desejo e conexão → sempre Perda de Intimidade
-                phaseKey = "desejo";
-            } else {
-                phaseKey = "brigas"; // fallback seguro
-            }
-
-            // — MENSAGEM personalizada: Q3 (nível de amor) ajusta o tom —
-            const base = cycleResults[phaseKey];
-            let message;
+            // Q3 (nível de amor) ajusta uma frase final de tom
+            let toneAddon;
             if (q3 === "A") {
-                message = base.messageHighLove; // ainda ama muito → mais esperança
+                toneAddon = "O amor que você ainda sente é a base. O que falta é o caminho certo.";
             } else if (q3 === "C") {
-                message = base.messageLowLove;  // já não sente como antes → mais acolhimento
+                toneAddon = "É natural duvidar depois de tudo. Mas ainda existe um caminho — e ele começa aqui.";
             } else {
-                message = base.message;          // ama mas está difícil → equilibrado
+                toneAddon = "Amar e estar exausta ao mesmo tempo é real. E tem caminho de saída.";
             }
 
-            return { name: base.name, message: message };
+            return {
+                name: phase.name,
+                real: phase.real,
+                toneAddon: toneAddon
+            };
         }
 
         function goToSalesPage() {

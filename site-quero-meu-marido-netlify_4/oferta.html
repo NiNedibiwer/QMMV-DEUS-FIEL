@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quero Meu Marido de Volta • Seu Plano Personalizado</title>
-    <meta name="description" content="Seu plano personalizado para reconectar com seu marido, baseado na fase do seu casamento. Acesso imediato por R$37 com garantia de 30 dias.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -15,7 +14,7 @@
         }
         
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system_ui, sans-serif;
             background: #FDF6F0;
         }
         
@@ -78,7 +77,8 @@
         }
     </style>
 
-    <!-- Meta Pixel -->
+    <!-- ===== META PIXEL ===== -->
+    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -95,7 +95,7 @@
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"
     /></noscript>
-    <!-- Fim Meta Pixel -->
+    <!-- ===== FIM META PIXEL ===== -->
 
 </head>
 <body class="bg-[#FDF6F0]">
@@ -146,14 +146,7 @@
         </div>
     </div>
 
-    <!-- BOTÃO DISCRETO PÓS-HERO -->
-    <div class="max-w-screen-md mx-auto px-5 pb-6 text-center">
-        <button onclick="buyNow()" class="text-[#8B5E3C] text-sm font-medium underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity">
-            Já quero começar — R$37 agora →
-        </button>
-    </div>
-
-    <!-- PAIN SECTION -->
+    <!-- PAIN + FASE + URGÊNCIA — bloco unificado -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
         <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100 premium-shadow">
             <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-5">Eu sei o que você está carregando</p>
@@ -161,58 +154,15 @@
             <p class="text-gray-700 leading-relaxed mb-4">
                 Você deita e não consegue descansar com o coração tranquilo. Durante o dia tenta ser forte. Mas tem momentos que a solidão bate — dentro do próprio casamento.
             </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Vocês estão na mesma casa. Às vezes na mesma cama. E mesmo assim existe uma distância enorme entre vocês que ninguém sabe explicar direito como surgiu.
+            <p class="text-gray-700 leading-relaxed">
+                Vocês estão na mesma casa. Às vezes na mesma cama. Mas a distância entre vocês cresce a cada dia que passa sem direção.
             </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Você tenta conversar e vira briga. Ou ele simplesmente fecha e você fica falando sozinha. Você se pergunta o que fez de errado. O que poderia ter feito diferente. Se ainda dá pra mudar.
-            </p>
-            <p class="text-gray-700 leading-relaxed font-medium">
-                E carrega tudo isso sozinha — sem saber com quem falar, sem saber por onde começar.
-            </p>
-        </div>
-    </div>
 
-    <!-- RESULT HIGHLIGHT -->
-    <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100 premium-shadow">
+            <div class="my-6 h-px bg-gray-100"></div>
+
             <div class="inline-block px-3 py-1 bg-[#8B5E3C] text-white text-xs font-bold tracking-widest rounded-full mb-3">SEU RESULTADO</div>
-            <div id="result-name" class="text-2xl font-semibold text-[#8B5E3C] mb-4"></div>
+            <div id="result-name" class="text-2xl font-semibold text-[#8B5E3C] mb-3"></div>
             <div id="result-desc" class="text-[15px] leading-relaxed text-gray-600"></div>
-        </div>
-    </div>
-
-    <!-- FEAR OF CONTINUING -->
-    <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100">
-            <p class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-5">O que acontece quando mais um dia passa assim</p>
-
-            <div class="space-y-4">
-                <div class="flex items-start gap-x-3">
-                    <div class="w-5 h-5 rounded-full bg-[#F8EDE3] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div class="w-2 h-2 rounded-full bg-[#8B5E3C]"></div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-[15px]">O silêncio vai se tornando o normal entre vocês.</p>
-                </div>
-                <div class="flex items-start gap-x-3">
-                    <div class="w-5 h-5 rounded-full bg-[#F8EDE3] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div class="w-2 h-2 rounded-full bg-[#8B5E3C]"></div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-[15px]">A distância que hoje ainda dói... amanhã pode simplesmente parar de doer. E é aí que mora o perigo real.</p>
-                </div>
-                <div class="flex items-start gap-x-3">
-                    <div class="w-5 h-5 rounded-full bg-[#F8EDE3] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div class="w-2 h-2 rounded-full bg-[#8B5E3C]"></div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-[15px]">Não é a briga que termina um casamento. É o dia em que um dos dois <strong>para de lutar</strong>.</p>
-                </div>
-                <div class="flex items-start gap-x-3">
-                    <div class="w-5 h-5 rounded-full bg-[#F8EDE3] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div class="w-2 h-2 rounded-full bg-[#8B5E3C]"></div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-[15px]">Cada dia sem direção clara é um dia que o afastamento cria raízes mais fundas.</p>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -251,79 +201,51 @@
         </div>
     </div>
 
-    <!-- WHAT YOU GET -->
-    <div class="max-w-screen-md mx-auto px-5 pb-10">
-        <div class="text-center mb-8">
-            <span class="inline-block px-4 py-1.5 bg-[#8B5E3C] text-white text-xs font-bold tracking-[2px] rounded-full">O QUE VOCÊ VAI RECEBER AGORA</span>
-        </div>
-        
-        <div class="grid grid-cols-1 gap-4">
-            
-            <div class="bg-white rounded-3xl p-6 flex gap-x-5 border border-gray-100 emotional-card">
-                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDF6F0] to-white rounded-2xl flex items-center justify-center">
-                    <i class="fa-solid fa-book text-[#8B5E3C] text-3xl"></i>
-                </div>
-                <div>
-                    <div class="font-semibold text-xl">O mapa do seu caminho de volta</div>
-                    <div class="text-gray-600 mt-1 text-[15px]">Mais de 12 páginas com o passo a passo pensado para a sua fase específica — não um conselho genérico, mas uma direção real para o seu caso.</div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-3xl p-6 flex gap-x-5 border border-gray-100 emotional-card">
-                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDF6F0] to-white rounded-2xl flex items-center justify-center">
-                    <i class="fa-solid fa-users text-[#8B5E3C] text-3xl"></i>
-                </div>
-                <div>
-                    <div class="font-semibold text-xl">Você não precisa carregar isso sozinha</div>
-                    <div class="text-gray-600 mt-1 text-[15px]">Acesso imediato à nossa comunidade exclusiva no WhatsApp com mais de 700 mulheres que entendem exatamente o que você está vivendo.</div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-3xl p-6 flex gap-x-5 border border-gray-100 emotional-card">
-                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDF6F0] to-white rounded-2xl flex items-center justify-center">
-                    <i class="fa-solid fa-compass text-[#8B5E3C] text-3xl"></i>
-                </div>
-                <div>
-                    <div class="font-semibold text-xl">Clareza para agir hoje</div>
-                    <div class="text-gray-600 mt-1 text-[15px]">Conteúdo organizado para você entender o que está acontecendo e saber exatamente o que fazer — sem enrolação, sem esperar mais.</div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- VALUE STACK -->
+    <!-- O QUE VOCÊ LEVA — fundido (entrega + value stack) -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100">
-            <p class="text-base font-bold tracking-widest text-[#8B5E3C] uppercase mb-6 text-center">Tudo que você leva hoje</p>
-            <div class="space-y-4 mb-7">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-x-3">
-                        <i class="fa-solid fa-check text-[#8B5E3C]"></i>
-                        <span class="text-gray-700 text-[15px]">Guia completo para a sua fase</span>
+        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100 premium-shadow">
+            <div class="text-center mb-7">
+                <span class="inline-block px-4 py-1.5 bg-[#8B5E3C] text-white text-xs font-bold tracking-[2px] rounded-full">O QUE VOCÊ RECEBE HOJE</span>
+            </div>
+
+            <div class="space-y-5 mb-7">
+                <div class="flex items-start gap-x-4">
+                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
+                        <i class="fa-solid fa-book-open text-[#8B5E3C]"></i>
                     </div>
-                    <span class="text-gray-400 text-sm line-through">R$ 47</span>
+                    <div class="flex-1">
+                        <div class="font-semibold text-gray-800">O mapa do caminho de volta</div>
+                        <div class="text-gray-600 text-[14px] mt-0.5">Passo a passo claro pra entender o que tá acontecendo e o que fazer agora.</div>
+                    </div>
+                    <span class="text-gray-400 text-sm line-through">R$47</span>
                 </div>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-x-3">
-                        <i class="fa-solid fa-check text-[#8B5E3C]"></i>
-                        <span class="text-gray-700 text-[15px]">Comunidade com 700+ mulheres</span>
+
+                <div class="flex items-start gap-x-4">
+                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
+                        <i class="fa-solid fa-users text-[#8B5E3C]"></i>
                     </div>
-                    <span class="text-gray-400 text-sm line-through">R$ 50</span>
+                    <div class="flex-1">
+                        <div class="font-semibold text-gray-800">Comunidade de 700+ mulheres</div>
+                        <div class="text-gray-600 text-[14px] mt-0.5">Acesso imediato ao grupo no WhatsApp. Você não precisa carregar isso sozinha.</div>
+                    </div>
+                    <span class="text-gray-400 text-sm line-through">R$50</span>
                 </div>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-x-3">
-                        <i class="fa-solid fa-check text-[#8B5E3C]"></i>
-                        <span class="text-gray-700 text-[15px]">Plano claro para agir agora</span>
+
+                <div class="flex items-start gap-x-4">
+                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
+                        <i class="fa-solid fa-compass text-[#8B5E3C]"></i>
                     </div>
-                    <span class="text-gray-400 text-sm">sem preço</span>
+                    <div class="flex-1">
+                        <div class="font-semibold text-gray-800">Clareza pra agir hoje</div>
+                        <div class="text-gray-600 text-[14px] mt-0.5">Sem enrolação, sem teoria. Os primeiros passos pra dar ainda esta semana.</div>
+                    </div>
                 </div>
             </div>
-            <div class="h-px bg-gray-100 mb-6"></div>
-            <div class="text-center">
-                <p class="text-gray-500 text-sm mb-1">Valor total: <span class="line-through font-semibold">R$ 97</span></p>
-                <p class="text-gray-800 text-sm font-medium mt-3">Quanto vale dormir com o coração mais leve hoje à noite?<br>Quanto vale saber que você tem um caminho — e não está mais no escuro?</p>
-            </div>
+
+            <div class="h-px bg-gray-100 mb-5"></div>
+            <p class="text-center text-gray-600 text-sm leading-relaxed">
+                Quanto vale dormir mais leve hoje à noite — sabendo que existe um caminho?
+            </p>
         </div>
     </div>
 
@@ -339,7 +261,7 @@
                     <div class="font-semibold text-gray-800">Ouça quem já estava onde você está hoje</div>
                 </div>
             </div>
-            <div class="rounded-2xl overflow-hidden" style="position:relative;padding-top:56.25%;">
+            <div class="rounded-2xl overflow-hidden mx-auto" style="position:relative;padding-top:125%;max-width:380px;background:#000;">
                 <iframe
                     src="https://drive.google.com/file/d/1aykzpzsmLzJWbbEjVhU3_6Ygk0-foAoI/preview"
                     style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
@@ -379,42 +301,26 @@
         </div>
     </div>
 
-    <!-- FAQ -->
+    <!-- FAQ — 3 perguntas chave -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
         <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100">
             <p class="text-base font-bold tracking-widest text-[#8B5E3C] uppercase mb-6 text-center">Perguntas frequentes</p>
             <div class="space-y-6">
                 <div>
-                    <p class="font-semibold text-gray-800 mb-1">E se meu marido não quiser participar?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Você não precisa dele para começar. O guia foi feito para a sua jornada — e mudanças na dinâmica do casal muitas vezes começam por um dos dois. Quando você muda sua postura, a resposta dele muda junto.</p>
+                    <p class="font-semibold text-gray-800 mb-1">E se ele não quiser participar?</p>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Você não precisa dele pra começar. O guia foi feito pra sua jornada — e mudanças na dinâmica do casal muitas vezes começam por um dos dois. Quando você muda sua postura, a resposta dele muda junto.</p>
                 </div>
                 <div class="h-px bg-gray-100"></div>
                 <div>
                     <p class="font-semibold text-gray-800 mb-1">Em quanto tempo vou ver resultado?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Não existe fórmula mágica — e você não vai encontrar uma aqui. O que você vai ter é clareza imediata sobre o que está acontecendo e os primeiros passos concretos para agir ainda hoje.</p>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Não existe fórmula mágica. O que você vai ter é clareza imediata sobre o que está acontecendo e os primeiros passos concretos pra agir ainda hoje.</p>
                 </div>
                 <div class="h-px bg-gray-100"></div>
                 <div>
-                    <p class="font-semibold text-gray-800 mb-1">E se eu não gostar?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Você tem 30 dias de garantia total. Se sentir que não foi pra você, é só pedir o reembolso — sem burocracia, sem perguntas.</p>
-                </div>
-                <div class="h-px bg-gray-100"></div>
-                <div>
-                    <p class="font-semibold text-gray-800 mb-1">Como vou receber o material?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Imediatamente após a compra você recebe acesso ao PDF e o link da comunidade no WhatsApp. Tudo no seu e-mail em menos de 5 minutos.</p>
+                    <p class="font-semibold text-gray-800 mb-1">Como recebo o material?</p>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Em menos de 5 minutos no seu e-mail. PDF + link da comunidade no WhatsApp. Acesso imediato.</p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- GARANTIA DESTAQUE -->
-    <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-[#FDF6F0] rounded-[2.25rem] p-8 border border-[#E8D9C9] text-center">
-            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border border-[#E8D9C9]">
-                <i class="fa-solid fa-shield-halved text-[#8B5E3C] text-2xl"></i>
-            </div>
-            <p class="font-bold text-[#8B5E3C] text-lg mb-2">Garantia de 30 dias — sem letras miúdas</p>
-            <p class="text-gray-600 text-[15px] leading-relaxed max-w-sm mx-auto">Se em até 30 dias você sentir que não valeu, devolvemos cada centavo. Sem questionamento, sem burocracia. O risco é todo nosso.</p>
         </div>
     </div>
 
@@ -444,11 +350,12 @@
             if (resultData) {
                 const result = JSON.parse(resultData);
                 document.getElementById('result-name').innerHTML = result.name;
-                document.getElementById('result-desc').innerHTML = result.message;
+                // Compatibilidade: aceita formato novo (result.real) ou antigo (result.message)
+                document.getElementById('result-desc').innerHTML = result.real || result.message || "";
             } else {
                 // Fallback: fase mais comum quando não há resultado do quiz
                 document.getElementById('result-name').innerHTML = "Fase do Afastamento Silencioso";
-                document.getElementById('result-desc').innerHTML = "Seu marido está emocionalmente distante — e esse silêncio dói mais do que qualquer briga. Essa fase é uma das mais comuns, mas pode ser revertida quando se entende o que está acontecendo de verdade.";
+                document.getElementById('result-desc').innerHTML = "O silêncio dele dói mais do que qualquer briga. Mas esse afastamento não é falta de amor — é um padrão que se instalou. E padrões se desfazem.";
             }
         }
 
