@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
         
         body {
             font-family: 'Inter', system_ui, sans-serif;
@@ -64,7 +64,6 @@
     </style>
 
     <!-- ===== META PIXEL ===== -->
-    <!-- TROCAR "4356731727899519" PELO ID REAL DO PIXEL DO FACEBOOK -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -155,19 +154,7 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
-            <div class="mt-8 flex items-center justify-between">
-                <button onclick="previousQuestion()" id="prev-btn"
-                        class="px-6 py-3 text-gray-500 hover:text-gray-700 flex items-center gap-x-2 text-sm font-medium transition-colors disabled:opacity-40">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span>Voltar</span>
-                </button>
-                
-                <button onclick="nextQuestion()" id="next-btn"
-                        class="px-8 py-3.5 bg-[#8B5E3C] hover:bg-[#6F4A2F] text-white font-semibold rounded-2xl flex items-center gap-x-2 disabled:opacity-50 transition-all">
-                    <span id="next-text">Próxima</span>
-                </button>
-            </div>
+
             
         </div>
 
@@ -179,7 +166,7 @@
             <h2 class="heading-serif text-2xl leading-tight mb-1 text-gray-700">Você está na</h2>
             <h2 id="result-phase-name" class="heading-serif text-3xl leading-tight text-[#8B5E3C] mb-6"></h2>
 
-            <!-- VIRADA — protagonista da tela -->
+            <!-- VIRADA -->
             <div class="bg-[#FDF6F0] border border-[#E8D9C9] rounded-3xl p-7 mb-6 text-left">
                 <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-3">A real é que...</p>
                 <p id="result-real" class="text-gray-700 leading-relaxed text-[15px] mb-3"></p>
@@ -197,14 +184,13 @@
     </div>
 
     <script>
-        // Tailwind config
         function initTailwind() {
             document.documentElement.style.setProperty('--accent', '#8B5E3C');
         }
 
-        // Quiz Data
         let currentQuestion = 0;
         let answers = {};
+        let autoAdvanceTimer = null; // controla o timer de avanço automático
 
         const questions = [
             {
@@ -247,8 +233,6 @@
             }
         ];
 
-        // Fase = espelho exato da Q1 (impossível errar)
-        // A real é que... = virada emocional, curta e impactante
         const phases = {
             "A": {
                 name: "Fase das Brigas e Conflitos",
@@ -277,6 +261,12 @@
         }
 
         function showQuestion() {
+            // Cancela qualquer timer de avanço automático pendente
+            if (autoAdvanceTimer) {
+                clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+
             const q = questions[currentQuestion];
             document.getElementById('question-text').innerHTML = q.text;
             document.getElementById('current-question').innerText = currentQuestion + 1;
@@ -322,25 +312,29 @@
                 optionsContainer.appendChild(div);
             });
 
-            document.getElementById('prev-btn').disabled = currentQuestion === 0;
-            document.getElementById('next-btn').disabled = !answers[q.id];
-            document.getElementById('next-text').innerHTML = currentQuestion === questions.length - 1 ? 'Finalizar' : 'Próxima';
+            document.getElementById('prev-btn') && (document.getElementById('prev-btn').disabled = currentQuestion === 0);
+            document.getElementById('next-btn') && (document.getElementById('next-btn').disabled = !answers[q.id]);
+            document.getElementById('next-text') && (document.getElementById('next-text').innerHTML = currentQuestion === questions.length - 1 ? 'Finalizar' : 'Próxima');
         }
 
         function selectOption(questionId, value) {
+            // Cancela timer anterior se ela mudar de opção rápido
+            if (autoAdvanceTimer) {
+                clearTimeout(autoAdvanceTimer);
+                autoAdvanceTimer = null;
+            }
+
             const alreadySelected = answers[questionId] === value;
 
             if (alreadySelected) {
-                // Deselect
                 delete answers[questionId];
-                document.getElementById('next-btn').disabled = true;
+                document.getElementById('next-btn') && (document.getElementById('next-btn').disabled = true);
             } else {
-                // Select
                 answers[questionId] = value;
-                document.getElementById('next-btn').disabled = false;
+                document.getElementById('next-btn') && (document.getElementById('next-btn').disabled = false);
             }
 
-            // Update all options visually
+            // Atualiza visual das opções
             document.querySelectorAll('#options-container .option').forEach(el => {
                 const isThis = el.dataset.value === value && !alreadySelected;
                 const isOther = el.dataset.value !== value;
@@ -361,6 +355,13 @@
                     if (ring) ring.style.borderColor = alreadySelected ? '' : '#8B5E3C';
                 }
             });
+
+            // ✅ AVANÇO AUTOMÁTICO: 400ms após selecionar, já vai pra próxima
+            if (!alreadySelected) {
+                autoAdvanceTimer = setTimeout(() => {
+                    nextQuestion();
+                }, 400);
+            }
         }
 
         function nextQuestion() {
@@ -385,17 +386,14 @@
             
             const result = determineResult();
 
-            // Pixel Lead — registra a fase pra análise (não é exibido pro usuário)
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Lead', { content_name: result.name });
             }
             
-            // Renderiza a fase + virada na tela
             document.getElementById('result-phase-name').textContent = result.name;
             document.getElementById('result-real').textContent = result.real;
             document.getElementById('result-tone').textContent = result.toneAddon;
             
-            // Salva no localStorage pra eventual uso na página de vendas
             localStorage.setItem('quizResult', JSON.stringify(result));
         }
 
@@ -403,10 +401,8 @@
             const q1 = answers[1];
             const q3 = answers[3];
 
-            // Fase = espelho direto da Q1 (ela escolheu, então sempre bate)
             const phase = phases[q1] || phases["A"];
 
-            // Q3 (nível de amor) ajusta uma frase final de tom
             let toneAddon;
             if (q3 === "A") {
                 toneAddon = "O amor que você ainda sente é a base. O que falta é o caminho certo.";
@@ -424,15 +420,12 @@
         }
 
         function goToSalesPage() {
-            // Redirect to sales page
             window.location.href = "/plano";
         }
 
-        // Initialize
         function initialize() {
             initTailwind();
             
-            // Keyboard support
             document.addEventListener('keydown', function(e) {
                 if (e.key === "Enter" && !document.getElementById('quiz-screen').classList.contains('hidden')) {
                     const nextBtn = document.getElementById('next-btn');
