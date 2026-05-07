@@ -3,233 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quero Meu Marido de Volta • Seu Plano Personalizado</title>
+    <title>Quero Meu Marido de Volta • Seu Plano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
-        
-        :root {
-            --accent: #8B5E3C;
-        }
-        
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-            background: #FDF6F0;
-        }
-        
-        .heading-serif {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.05;
-        }
-
-        .premium-shadow {
-            box-shadow: 0 30px 70px -15px rgb(139 94 60 / 0.25);
-        }
-
-        .section-header {
-            font-size: 2.1rem;
-            line-height: 1.15;
-            letter-spacing: -0.025em;
-        }
-
-        .soft-gradient {
-            background: linear-gradient(180deg, #FDF6F0 0%, #F8EDE3 100%);
-        }
-
-        .emotional-card {
-            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-
-        .emotional-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .nav-scrolled {
-            box-shadow: 0 4px 20px rgb(139 94 60 / 0.08);
-        }
-
-        .luxury-button {
-            background: linear-gradient(to right, #8B5E3C, #6F4A2F);
-            box-shadow: 0 10px 25px rgb(139 94 60 / 0.35);
-            transition: all 0.3s ease;
-        }
-        
-        .luxury-button:hover {
-            box-shadow: 0 15px 35px rgb(139 94 60 / 0.45);
-            transform: translateY(-2px);
-        }
-
-        .subtle-pattern {
-            background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath fill=%22%23E8D9C9%22 fill-opacity=%22008%22 d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-10V8h-2v16h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 6v-4H4v4H0v2h4v4h2V8h4V6H6z%22/%3E%3C/g%3E%3C/svg%27');
-            background-size: 60px 60px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; background: #FDF6F0; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.05; }
+        .luxury-button { background: linear-gradient(to right, #8B5E3C, #6F4A2F); box-shadow: 0 10px 25px rgb(139 94 60 / 0.3); transition: all 0.3s ease; }
+        .luxury-button:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgb(139 94 60 / 0.4); }
     </style>
 
-    <!-- ===== UTMIFY PIXEL ===== -->
+    <!-- UTMIFY PIXEL -->
     <script>
       window.pixelId = "69fa741211ef33345d58be41";
       var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      a.setAttribute("async",""); a.setAttribute("defer","");
+      a.setAttribute("src","https://cdn.utmify.com.br/scripts/pixel/pixel.js");
       document.head.appendChild(a);
     </script>
-    <!-- ===== FIM UTMIFY PIXEL ===== -->
-
-    <!-- ===== UTMIFY ===== -->
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-      async
-      defer
-    ></script>
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+    <!-- UTMIFY BACK REDIRECT -->
     <script>
       const link = 'https://queromeumaridodevolta.netlify.app/plano';
       function setBackRedirect(url) {
-        let urlBackRedirect = url;
-        urlBackRedirect = urlBackRedirect.trim() +
-          (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
-          document.location.search.replace('?', '').toString();
+        let u = url.trim() + (url.indexOf('?') > 0 ? '&' : '?') + document.location.search.replace('?','').toString();
         history.pushState({}, '', location.href);
         history.pushState({}, '', location.href);
         history.pushState({}, '', location.href);
-        window.addEventListener('popstate', () => {
-          setTimeout(() => { location.href = urlBackRedirect; }, 1);
-        });
+        window.addEventListener('popstate', () => { setTimeout(() => { location.href = u; }, 1); });
       }
       setBackRedirect(link);
     </script>
-    <!-- ===== FIM UTMIFY ===== -->
 
-    <!-- ===== META PIXEL ===== -->
+    <!-- META PIXEL -->
     <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '4356731727899519');
-        fbq('track', 'PageView');
-        fbq('track', 'ViewContent');
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init','4356731727899519');
+        fbq('track','PageView');
+        fbq('track','ViewContent');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- ===== FIM META PIXEL ===== -->
-
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4356731727899519&ev=PageView&noscript=1"/></noscript>
 </head>
 <body class="bg-[#FDF6F0]">
 
-    <!-- NAV -->
-    <nav class="bg-white/95 backdrop-blur-lg border-b border-white/60 sticky top-0 z-50">
+    <!-- NAV — ETHOS: presença simples, sem ruído -->
+    <nav class="bg-white/95 backdrop-blur-lg border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-screen-md mx-auto px-5 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-x-3">
-                <div>
-                    <span class="font-bold text-2xl tracking-tighter text-[#8B5E3C]">Quero Meu Marido</span>
-                    <span class="font-semibold text-xl tracking-tight">de Volta</span>
-                </div>
-            </div>
-            
-            <div class="flex items-center gap-x-2 text-xs bg-white px-3 py-1.5 rounded-full border border-gray-100">
-                <div class="flex items-center gap-x-1.5">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span id="live-count" class="font-medium text-gray-600">87 pessoas</span>
-                </div>
+            <span class="font-bold text-xl tracking-tight text-[#8B5E3C]">Quero Meu Marido de Volta</span>
+            <div class="flex items-center gap-x-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-gray-100">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span id="live-count" class="font-medium text-gray-600">87 mulheres</span>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO — PATHOS: emoção medida, acolhedora -->
     <div class="max-w-screen-md mx-auto px-5 pt-12 pb-10 text-center">
         <div class="inline-block px-4 py-1 bg-white rounded-full text-xs font-semibold tracking-widest mb-6 border border-gray-100 text-[#8B5E3C]">
             PARA VOCÊ QUE AINDA ACREDITA NO SEU CASAMENTO
         </div>
-        
-        <h1 class="heading-serif text-[2.6rem] leading-[1.08] tracking-[-2px] mb-5">
-            Você não está perdendo<br>seu marido.<br>Você está perdendo a conexão<br>que existia entre vocês.
-        </h1>
-        
-        <p class="text-xl text-gray-600 max-w-sm mx-auto leading-relaxed">
-            E isso tem solução. Mesmo que hoje pareça que não tem.
-        </p>
 
-        <div class="mt-8 flex justify-center">
-            <div class="inline-flex items-center gap-x-2 bg-[#FDF6F0] px-4 py-2 rounded-2xl border border-[#E8D9C9] text-sm">
-                <div class="flex -space-x-2">
-                    <img src="https://i.pravatar.cc/28?img=28" class="w-7 h-7 rounded-full border-2 border-white ring-1 ring-gray-100">
-                    <img src="https://i.pravatar.cc/28?img=32" class="w-7 h-7 rounded-full border-2 border-white ring-1 ring-gray-100">
-                    <img src="https://i.pravatar.cc/28?img=47" class="w-7 h-7 rounded-full border-2 border-white ring-1 ring-gray-100">
-                </div>
-                <span class="font-semibold">877 mulheres</span>
-                <span class="text-xs text-gray-500">começaram essa semana</span>
-            </div>
-        </div>
+        <!-- TÍTULO NOVO -->
+        <h1 class="heading-serif text-[2.4rem] leading-[1.08] tracking-[-1.5px] mb-5 text-gray-800">
+            O distanciamento no<br>casamento não é o fim.<br>É uma fase que tem saída.
+        </h1>
+
+        <!-- LOGOS: argumento claro e racional -->
+        <p class="text-lg text-gray-500 max-w-sm mx-auto leading-relaxed">
+            Quando você entende o que está acontecendo de verdade, o caminho de volta fica mais claro.
+        </p>
     </div>
 
-    <!-- PAIN + FASE + URGÊNCIA — bloco unificado -->
+    <!-- DOR — PATHOS equilibrado com LOGOS -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100 premium-shadow">
+        <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
             <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-5">Eu sei o que você está carregando</p>
-
             <p class="text-gray-700 leading-relaxed mb-4">
-                Você deita e não consegue descansar com o coração tranquilo. Durante o dia tenta ser forte. Mas tem momentos que a solidão bate — dentro do próprio casamento.
+                Você tenta ser forte durante o dia. Mas tem momentos em que a solidão bate — dentro do próprio casamento. Vocês estão na mesma casa, às vezes na mesma cama. Mas a distância entre vocês cresce a cada dia sem direção.
             </p>
             <p class="text-gray-700 leading-relaxed">
-                Vocês estão na mesma casa. Às vezes na mesma cama. Mas a distância entre vocês cresce a cada dia que passa sem direção.
-            </p>
-
-            <div class="my-6 h-px bg-gray-100"></div>
-
-            <div class="inline-block px-3 py-1 bg-[#8B5E3C] text-white text-xs font-bold tracking-widest rounded-full mb-3">SEU RESULTADO</div>
-            <div id="result-name" class="text-2xl font-semibold text-[#8B5E3C] mb-3"></div>
-            <div id="result-desc" class="text-[15px] leading-relaxed text-gray-600"></div>
-        </div>
-    </div>
-
-    <!-- VIRADA -->
-    <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-gradient-to-br from-[#FDF6F0] to-[#F8EDE3] rounded-[2.25rem] p-8 border border-[#E8D9C9]">
-            <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-5">A real é que...</p>
-
-            <p class="text-gray-800 text-lg font-semibold leading-snug mb-5">
-                O problema no seu casamento não é falta de amor.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-4 text-[15px]">
-                É um padrão que foi se instalando entre vocês — devagar, silenciosamente — até virar rotina. Não foi você. Não foi ele. Foi a dinâmica que tomou conta sem que ninguém percebesse.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-6 text-[15px]">
-                E a boa notícia é que padrões podem ser quebrados. Com as ações certas, no momento certo, do jeito certo.
-            </p>
-            <div class="h-px bg-[#E8D9C9] mb-6"></div>
-            <p class="text-gray-700 leading-relaxed text-[15px]">
-                Foi pensando nessa mulher — que ainda acredita, que ainda quer, mas não sabe como — que o <strong>Quero Meu Marido de Volta</strong> foi criado.
+                Isso tem nome. E mais importante: tem saída.
             </p>
         </div>
     </div>
 
     <!-- CTA INTERMEDIÁRIO -->
-    <div class="max-w-screen-md mx-auto px-5 pb-2 pt-2">
-        <div class="bg-[#FDF6F0] rounded-3xl p-6 text-center border border-[#E8D5C4]">
+    <div class="max-w-screen-md mx-auto px-5 pb-10">
+        <div class="bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm">
             <p class="text-[#8B5E3C] font-semibold text-base mb-1">Já sabe que quer começar?</p>
-            <p class="text-gray-500 text-sm mb-4">De <span class="line-through">R$97</span> por apenas <span class="font-bold text-[#8B5E3C]">R$27</span> — <span class="text-red-500 font-semibold">só nas próximas 24h</span></p>
-            <button onclick="buyNow()"
-                    class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985]">
+            <p class="text-gray-400 text-sm mb-4">De <span class="line-through">R$97</span> por <span class="font-bold text-[#8B5E3C]">R$27</span> — <span class="text-red-400 font-semibold">só hoje</span></p>
+            <button onclick="buyNow()" class="luxury-button w-full py-4 text-white text-base font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985]">
                 <span>Quero salvar meu casamento agora</span>
                 <i class="fa-solid fa-arrow-right text-sm"></i>
             </button>
@@ -237,125 +101,117 @@
         </div>
     </div>
 
-    <!-- O QUE VOCÊ LEVA — fundido (entrega + value stack) -->
+    <!-- VIRADA — LOGOS: argumento racional que sustenta o pathos -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100 premium-shadow">
-            <div class="text-center mb-7">
-                <span class="inline-block px-4 py-1.5 bg-[#8B5E3C] text-white text-xs font-bold tracking-[2px] rounded-full">O QUE VOCÊ RECEBE HOJE</span>
-            </div>
-
-            <div class="space-y-5 mb-7">
-                <div class="flex items-start gap-x-4">
-                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
-                        <i class="fa-solid fa-book-open text-[#8B5E3C]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="font-semibold text-gray-800">O mapa do caminho de volta</div>
-                        <div class="text-gray-600 text-[14px] mt-0.5">Passo a passo claro pra entender o que tá acontecendo e o que fazer agora.</div>
-                    </div>
-                    <span class="text-gray-400 text-sm line-through">R$47</span>
-                </div>
-
-                <div class="flex items-start gap-x-4">
-                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
-                        <i class="fa-solid fa-users text-[#8B5E3C]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="font-semibold text-gray-800">Comunidade de 700+ mulheres</div>
-                        <div class="text-gray-600 text-[14px] mt-0.5">Acesso imediato ao grupo no WhatsApp. Você não precisa carregar isso sozinha.</div>
-                    </div>
-                    <span class="text-gray-400 text-sm line-through">R$50</span>
-                </div>
-
-                <div class="flex items-start gap-x-4">
-                    <div class="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-[#FDF6F0] to-white rounded-xl flex items-center justify-center border border-[#E8D9C9]">
-                        <i class="fa-solid fa-compass text-[#8B5E3C]"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="font-semibold text-gray-800">Clareza pra agir hoje</div>
-                        <div class="text-gray-600 text-[14px] mt-0.5">Sem enrolação, sem teoria. Os primeiros passos pra dar ainda esta semana.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-px bg-gray-100 mb-5"></div>
-            <p class="text-center text-gray-600 text-sm leading-relaxed">
-                Quanto vale dormir mais leve hoje à noite — sabendo que existe um caminho?
+        <div class="bg-gradient-to-br from-[#FDF6F0] to-[#F8EDE3] rounded-[2rem] p-8 border border-[#E8D9C9]">
+            <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-5">A real é que...</p>
+            <p class="text-gray-800 text-lg font-semibold leading-snug mb-4">
+                O problema no seu casamento não é falta de amor.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4 text-[15px]">
+                É um padrão que foi se instalando entre vocês — devagar, silenciosamente — até virar rotina. Não foi você. Não foi ele. Foi a dinâmica que tomou conta sem que ninguém percebesse.
+            </p>
+            <p class="text-gray-700 leading-relaxed text-[15px]">
+                Padrões podem ser quebrados. Com as ações certas, no momento certo, do jeito certo. Foi pensando nessa mulher que o <strong>Quero Meu Marido de Volta</strong> foi criado.
             </p>
         </div>
     </div>
 
-    <!-- VIDEO TESTIMONIAL -->
+    <!-- O QUE VOCÊ RECEBE — LOGOS: entrega clara e racional -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-3xl p-7 border border-gray-100 premium-shadow">
+        <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
+            <div class="text-center mb-7">
+                <span class="inline-block px-4 py-1.5 bg-[#8B5E3C] text-white text-xs font-bold tracking-[2px] rounded-full">O QUE VOCÊ RECEBE HOJE</span>
+            </div>
+            <div class="space-y-5 mb-6">
+                <div class="flex items-start gap-x-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-[#FDF6F0] rounded-xl flex items-center justify-center border border-[#E8D9C9]">
+                        <i class="fa-solid fa-book-open text-[#8B5E3C] text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-gray-800 mb-0.5">O mapa do caminho de volta</div>
+                        <div class="text-gray-500 text-[14px] leading-relaxed">Passo a passo claro pra entender o que tá acontecendo e o que fazer agora.</div>
+                    </div>
+                </div>
+                <div class="h-px bg-gray-50"></div>
+                <div class="flex items-start gap-x-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-[#FDF6F0] rounded-xl flex items-center justify-center border border-[#E8D9C9]">
+                        <i class="fa-solid fa-compass text-[#8B5E3C] text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-gray-800 mb-0.5">Clareza pra agir hoje</div>
+                        <div class="text-gray-500 text-[14px] leading-relaxed">Sem enrolação, sem teoria. Os primeiros passos pra dar ainda esta semana.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-px bg-gray-50 mb-5"></div>
+            <p class="text-center text-gray-400 text-sm">Quanto vale dormir mais leve hoje à noite — sabendo que existe um caminho?</p>
+        </div>
+    </div>
+
+    <!-- DEPOIMENTO -->
+    <div class="max-w-screen-md mx-auto px-5 pb-12">
+        <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
             <div class="flex items-center gap-x-3 mb-5">
                 <div class="w-10 h-10 bg-[#E8D9C9] rounded-full flex items-center justify-center flex-shrink-0">
-                    <i class="fa-solid fa-heart text-[#8B5E3C]"></i>
+                    <i class="fa-solid fa-heart text-[#8B5E3C] text-sm"></i>
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase">Depoimento real</div>
-                    <div class="font-semibold text-gray-800">Ouça quem já estava onde você está hoje</div>
+                    <div class="font-semibold text-gray-800 text-sm">Ouça quem já estava onde você está</div>
                 </div>
             </div>
-            <div class="rounded-2xl overflow-hidden mx-auto" style="position:relative;padding-top:125%;max-width:380px;background:#000;">
+            <div class="rounded-2xl overflow-hidden mx-auto" style="position:relative;padding-top:125%;max-width:360px;background:#000;">
                 <iframe
                     src="https://drive.google.com/file/d/1aykzpzsmLzJWbbEjVhU3_6Ygk0-foAoI/preview"
                     style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-                    allow="autoplay"
-                    allowfullscreen>
+                    allow="autoplay" allowfullscreen>
                 </iframe>
             </div>
             <p class="text-xs text-center text-gray-400 mt-3">Depoimento voluntário • Resultado individual pode variar</p>
         </div>
     </div>
 
-    <!-- PRICE -->
+    <!-- PREÇO — ETHOS: honesto, sem pressão exagerada -->
     <div class="max-w-screen-md mx-auto px-5 pb-14">
         <div class="bg-gradient-to-br from-[#8B5E3C] to-[#6F4A2F] rounded-[2.5rem] p-10 text-white text-center">
-            <div class="text-sm tracking-[1.5px] opacity-75 mb-2">SEU INVESTIMENTO HOJE</div>
-            
+            <div class="text-sm tracking-widest opacity-70 mb-2">SEU INVESTIMENTO HOJE</div>
             <div class="flex items-end justify-center gap-x-3 mb-2">
-                <span class="line-through text-4xl opacity-50">R$ 97</span>
+                <span class="line-through text-3xl opacity-40">R$ 97</span>
                 <span class="text-7xl font-bold tracking-tighter">R$ 27</span>
             </div>
-
-            <div class="text-sm opacity-80 mb-1">Pagamento único • Acesso imediato</div>
-            <div class="text-xs opacity-60 mb-1">Um presente para o seu casamento — e para você.</div>
+            <div class="text-sm opacity-75 mb-1">Pagamento único • Acesso imediato</div>
             <div class="text-xs text-yellow-300 font-semibold mb-8">⏰ Oferta válida por apenas 24 horas</div>
-            
-            <div class="my-6 h-px bg-white/20"></div>
-            
-            <button onclick="buyNow()"
-                    class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985]">
+            <div class="h-px bg-white/20 mb-8"></div>
+            <button onclick="buyNow()" class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985]">
                 <span>Quero salvar meu casamento agora</span>
                 <i class="fa-solid fa-arrow-right"></i>
             </button>
-            
-            <div class="mt-5 flex justify-center items-center gap-x-2 text-xs opacity-75">
+            <div class="mt-5 flex justify-center items-center gap-x-2 text-xs opacity-70">
                 <i class="fa-solid fa-shield-halved"></i>
                 <span>Garantia de 30 dias • Se não gostar, devolvemos tudo</span>
             </div>
         </div>
     </div>
 
-    <!-- FAQ — 3 perguntas chave -->
+    <!-- FAQ — LOGOS: razão que sustenta a decisão -->
     <div class="max-w-screen-md mx-auto px-5 pb-12">
-        <div class="bg-white rounded-[2.25rem] p-8 border border-gray-100">
-            <p class="text-base font-bold tracking-widest text-[#8B5E3C] uppercase mb-6 text-center">Perguntas frequentes</p>
+        <div class="bg-white rounded-[2rem] p-8 border border-gray-100">
+            <p class="text-xs font-bold tracking-widest text-[#8B5E3C] uppercase mb-6 text-center">Perguntas frequentes</p>
             <div class="space-y-6">
                 <div>
                     <p class="font-semibold text-gray-800 mb-1">E se ele não quiser participar?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Você não precisa dele pra começar. O guia foi feito pra sua jornada — e mudanças na dinâmica do casal muitas vezes começam por um dos dois. Quando você muda sua postura, a resposta dele muda junto.</p>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Você não precisa dele pra começar. O guia foi feito pra sua jornada. Quando você muda sua postura, a dinâmica entre vocês muda junto.</p>
                 </div>
-                <div class="h-px bg-gray-100"></div>
+                <div class="h-px bg-gray-50"></div>
                 <div>
-                    <p class="font-semibold text-gray-800 mb-1">Em quanto tempo vou ver resultado?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Não existe fórmula mágica. O que você vai ter é clareza imediata sobre o que está acontecendo e os primeiros passos concretos pra agir ainda hoje.</p>
+                    <p class="font-semibold text-gray-800 mb-1">Em quanto tempo vejo resultado?</p>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Não existe fórmula mágica. O que você tem é clareza imediata sobre o que está acontecendo e os primeiros passos concretos pra agir ainda hoje.</p>
                 </div>
-                <div class="h-px bg-gray-100"></div>
+                <div class="h-px bg-gray-50"></div>
                 <div>
                     <p class="font-semibold text-gray-800 mb-1">Como recebo o material?</p>
-                    <p class="text-gray-600 text-[15px] leading-relaxed">Em menos de 5 minutos no seu e-mail. PDF + link da comunidade no WhatsApp. Acesso imediato.</p>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Em menos de 5 minutos no seu e-mail. PDF com acesso imediato.</p>
                 </div>
             </div>
         </div>
@@ -364,12 +220,10 @@
     <!-- FINAL CTA -->
     <div class="max-w-screen-md mx-auto px-5 pb-16 text-center">
         <p class="text-sm text-gray-400 mb-2">Você não precisa continuar sozinha nessa dor.</p>
-        <div class="heading-serif text-2xl leading-snug tracking-tight mb-6">
+        <div class="heading-serif text-2xl leading-snug tracking-tight mb-6 text-gray-800">
             Seu casamento ainda pode ser<br>o que ele um dia foi.
         </div>
-        <p class="text-gray-500 text-sm mb-8 max-w-xs mx-auto leading-relaxed">Muitas mulheres que estavam exatamente assim deram a volta por cima e reconectaram o casamento. Você pode ser a próxima.</p>
-        <button onclick="buyNow()"
-                class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985] mb-3">
+        <button onclick="buyNow()" class="luxury-button w-full py-4 text-white text-lg font-semibold rounded-2xl flex items-center justify-center gap-x-3 active:scale-[0.985] mb-3">
             <span>Quero salvar meu casamento agora</span>
             <i class="fa-solid fa-arrow-right"></i>
         </button>
@@ -377,121 +231,31 @@
     </div>
 
     <script>
-        function initTailwind() {
-            // Tailwind is already loaded via CDN
-        }
-
-        function loadResult() {
-            const resultData = localStorage.getItem('quizResult');
-            
-            if (resultData) {
-                const result = JSON.parse(resultData);
-                document.getElementById('result-name').innerHTML = result.name;
-                // Compatibilidade: aceita formato novo (result.real) ou antigo (result.message)
-                document.getElementById('result-desc').innerHTML = result.real || result.message || "";
-            } else {
-                // Fallback: fase mais comum quando não há resultado do quiz
-                document.getElementById('result-name').innerHTML = "Fase do Afastamento Silencioso";
-                document.getElementById('result-desc').innerHTML = "O silêncio dele dói mais do que qualquer briga. Mas esse afastamento não é falta de amor — é um padrão que se instalou. E padrões se desfazem.";
-            }
-        }
-
         function buyNow() {
-            // ===== LINK DO CHECKOUT KIWIFY =====
             const checkoutUrl = "https://ggcheckout.app/checkout/v4/IVWSz0qlgXta945DCGVu";
-
-            // Dispara o evento InitiateCheckout no Meta Pixel
-            // O setTimeout garante que o evento seja enviado ANTES do redirect
-            // (sem isso, o redirect cancela a requisição em ~30-50% dos casos)
             if (typeof fbq !== 'undefined') {
-                fbq('track', 'InitiateCheckout', {
-                    value: 27.00,
-                    currency: 'BRL'
-                });
-                // Aguarda 250ms pro evento ser enviado pra Meta antes de redirecionar
-                setTimeout(function() {
-                    window.location.href = checkoutUrl;
-                }, 250);
+                fbq('track', 'InitiateCheckout', { value: 27.00, currency: 'BRL' });
+                setTimeout(() => { window.location.href = checkoutUrl; }, 250);
             } else {
-                // Fallback: se o pixel não carregou, redireciona direto
                 window.location.href = checkoutUrl;
             }
         }
 
-
         function initialize() {
-            initTailwind();
-            loadResult();
-            
-            // Add scroll effect to nav
+            // Live counter
+            const counter = document.getElementById('live-count');
+            let count = 87;
+            setInterval(() => {
+                count += Math.floor(Math.random() * 2);
+                if (count > 112) count = 89;
+                counter.textContent = count + ' mulheres';
+            }, 7000);
+
+            // Scroll nav shadow
             const nav = document.querySelector('nav');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.classList.add('nav-scrolled');
-                } else {
-                    nav.classList.remove('nav-scrolled');
-                }
-                
-                // Subtle background color change
-                const scrollPercent = Math.min(window.scrollY / 800, 1);
-                const newColor = `hsl(30, 35%, ${97 - scrollPercent * 3}%)`;
-                document.body.style.background = newColor;
+                nav.style.boxShadow = window.scrollY > 20 ? '0 4px 20px rgb(139 94 60 / 0.08)' : 'none';
             });
-            
-            console.log('%c[Vendas] Página carregada com sucesso', 'color:#8B5E3C');
-
-            // Live counter animation (starts at 55 and slowly increases)
-            function startLiveCounter() {
-                const counter = document.getElementById('live-count');
-                if (!counter) return;
-                
-                let count = 87;
-                counter.innerText = count + ' pessoas';
-                
-                const interval = setInterval(() => {
-                    count += Math.floor(Math.random() * 2) + 1;
-                    if (count > 112) count = 112;
-                    if (count < 82) count = 82;
-                    counter.innerText = count + ' pessoas';
-                }, 6500);
-            }
-            
-            startLiveCounter();
-
-            // Exit Intent Popup
-            let exitShown = false;
-            document.addEventListener('mouseleave', function(e) {
-                if (e.clientY < 0 && !exitShown) {
-                    exitShown = true;
-                    showExitPopup();
-                }
-            });
-        }
-
-        function showExitPopup() {
-            const popup = document.createElement('div');
-            popup.innerHTML = `
-                <div class="fixed inset-0 bg-black/60 flex items-end justify-center z-[9999]" style="animation: fadeIn 0.2s ease;">
-                    <div class="bg-white w-full max-w-screen-md rounded-t-3xl p-8 text-center" style="animation: slideUp 0.4s ease;">
-                        <div class="w-16 h-1 bg-gray-200 mx-auto rounded-full mb-6"></div>
-                        
-                        <div class="text-3xl mb-4">💔</div>
-                        <h3 class="text-2xl font-semibold mb-3">Não desista do seu casamento agora.</h3>
-                        <p class="text-gray-600 mb-6">Muitas mulheres que estavam exatamente onde você está hoje conseguiram salvar o relacionamento. Você ainda pode fazer isso.</p>
-                        
-                        <button onclick="this.closest('.fixed').remove()" 
-                                class="w-full py-4 bg-[#8B5E3C] text-white font-semibold rounded-2xl mb-3 active:scale-[0.985]">
-                            Quero tentar mais um pouco
-                        </button>
-                        
-                        <button onclick="this.closest('.fixed').remove()" 
-                                class="w-full py-3 text-sm text-gray-500">
-                            Sair mesmo assim
-                        </button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(popup);
         }
 
         window.onload = initialize;
